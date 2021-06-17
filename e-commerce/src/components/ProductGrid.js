@@ -1,19 +1,17 @@
 import React from 'react'
 import ProductCard from './ProductCard'
 
-const ProductGrid = ({products}) => {
+const ProductGrid = ({productCatalog}) => {
     return (
-        <div className="product-grid">
 
-            {products.map(product=>
-             <ProductCard product={product}/>
-                )}
-        
-           
+        productCatalog.map(product=>(
+            <ProductCard product={product}/>
             
+        ))
 
         
-        </div>
+
+        
     )
 }
 

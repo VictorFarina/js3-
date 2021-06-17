@@ -6,7 +6,7 @@
 
 body{
   font-family: 'Fjalla One', sans-serif;
-  background-image: url('https://images.unsplash.com/photo-1593139952453-743ed41b9f9d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1596&q=80');
+  background:#fff;
   background-repeat:no-repeat;
   object-fit: contain;
   background-size: cover;
