@@ -11,41 +11,15 @@ import {BrowserRouter as Router,Switch, Route} from 'react-router-dom'
 
 
 
-function App() {
 
- 
+function App() {  
 
-   
-
-    
-
-   
-
-    
-
-  
-
-  
-
-  
-
-
-
-    
-
-   
-
-    
-
-   
-    
-    
-
-
-
+  const api = axios.create({baseURL:'http://localhost:9999/'})
+  api.get('api/products').then(res =>{
+  console.log(res.data);
+  })
 
   return (
-
    <Router>
      <Navbar/>
         <Switch>
