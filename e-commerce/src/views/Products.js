@@ -5,9 +5,9 @@ import { getProductCatalog } from '../store/actions/productCatalogActions';
 import ProductGrid from '../components/ProductGrid';
 
 const Products = () => {
-    
-    const dispatch = useDispatch();
-    const productCatalog = useSelector(state =>state.productCatalog);
+    const dispatch = useDispatch(); 
+    const productCatalog = useSelector(state =>state.productCatalog); 
+
     useEffect(() => {
     dispatch(getProductCatalog());
     },[dispatch])
@@ -18,4 +18,6 @@ const Products = () => {
         </div>       
     )
 }
+
+
 export default Products

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Home from './views/Home'
 import About from './views/About'
 import Products from './views/Products'
+import ProductPage from './views/ProductPage'
 import { BrowserRouter as Router,Switch, Route } from 'react-router-dom'
 
 
@@ -18,11 +19,16 @@ function App() {
   return (
    <Router>
      <Navbar/>
+
         <Switch>
+
             <Route exact path="/" component={Home}/>
             <Route exact path="/About" component={About}/>
             <Route exact path="/Products"component={Products}/>
+            <Route exact path ="/Products/:id"component={ProductPage}/>
+
         </Switch>
+
    </Router>
   );
 }

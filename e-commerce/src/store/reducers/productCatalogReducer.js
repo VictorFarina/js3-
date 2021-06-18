@@ -1,17 +1,18 @@
 import actiontypes from "../actiontypes";
 
 
-const initState = []
+const initialState = []
 
-const rootReducer=(state=initState,action) => {
+const productCatalogReducer=(state=initialState,action) => {
     switch (action.type) {
         case actiontypes().productCatalog.set:state=action.payload
             return state
+            
         default: 
             return state
     }
 }
 
-export  default  rootReducer;
+export  default  productCatalogReducer;
 
 
