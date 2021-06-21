@@ -14,14 +14,7 @@ body{
 }
 
 
-.navbar {
-  padding-top:2rem;
-  background: rgb(255, 255, 255);
-  display:flex;
-  justify-content: space-between;
-  display:flex;
-  background-color: #8d4721;
-}
+
 .nav-links{
   display:flex;
 
@@ -35,14 +28,13 @@ body{
 }
 
 .cart{
-  position: relative;
-  margin-right: 4rem;
+  width: 40rem;
 }
 
 .fa-shopping-cart{
 font-size: 28px;
 margin: auto;
-color: #fff;
+
 }
 .cart h3{
 text-align: center;

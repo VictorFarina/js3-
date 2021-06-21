@@ -9,5 +9,5 @@ export default combineReducers({
 
     product:productReducer,
 
-    cart:cartReducer,
+    cartReducer,
 })

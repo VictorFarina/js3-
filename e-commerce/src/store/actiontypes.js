@@ -8,7 +8,8 @@ const actiontypes = ()=>{
             clear:'PRODUCT_CLEAR'
         },
 
-        cart:{
+        cart: 
+        {
         add:'ADD_ITEM',
         sub:'SUB_ITEM',
         remove:'REMOVE_FROM_CART',
@@ -16,8 +17,6 @@ const actiontypes = ()=>{
         clear:'CLEAR_CART'
         }
     }
-    
-
 }
 
 export default actiontypes;
