@@ -1,6 +1,5 @@
 import actiontypes from "../actiontypes";
 
-
 const initialState = []
 
 const productCatalogReducer=(state=initialState,action) => {
@@ -10,7 +9,9 @@ const productCatalogReducer=(state=initialState,action) => {
             
         default: 
             return state
+            
     }
+
 }
 
 export  default  productCatalogReducer;

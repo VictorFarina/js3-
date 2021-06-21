@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Home from './views/Home'
 import About from './views/About'
 import Products from './views/Products'
+import Cart from './components/Cart'
 import ProductPage from './views/ProductPage'
 import { BrowserRouter as Router,Switch, Route } from 'react-router-dom'
 
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/About" component={About}/>
             <Route exact path="/Products"component={Products}/>
             <Route exact path ="/Products/:id"component={ProductPage}/>
+            <Route exact path ="/cart"component={Cart}/>
 
         </Switch>
 

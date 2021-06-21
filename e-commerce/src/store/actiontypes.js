@@ -6,6 +6,14 @@ const actiontypes = ()=>{
         product:{
             set:'SET_PRODUCT',
             clear:'PRODUCT_CLEAR'
+        },
+
+        cart:{
+        add:'ADD_ITEM',
+        sub:'SUB_ITEM',
+        remove:'REMOVE_FROM_CART',
+        set:'SET_CART',
+        clear:'CLEAR_CART'
         }
     }
     

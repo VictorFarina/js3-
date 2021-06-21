@@ -8,6 +8,7 @@ export const getProductCatalog=() => {
         dispatch(setProducts(res.data))
     }
 }
+
 export const setProducts = products => {
 
     return {
@@ -16,6 +17,7 @@ export const setProducts = products => {
     }
 }
 //recieving id from component
+
 export const getProductById = id => {
     return async dispatch => {
         const res = await axios.get(`http://localhost:9999/api/products/${id}`)
@@ -23,8 +25,8 @@ export const getProductById = id => {
     }
 }
 
-export const setOneProduct = product=>{
-    return{
+export const setOneProduct = product => {
+    return {
         type:actiontypes().product.set,
         payload:product
     }

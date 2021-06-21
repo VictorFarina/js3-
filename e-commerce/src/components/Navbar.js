@@ -1,22 +1,49 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import Cart from './Cart'
 
 const Navbar = () => {
     return (
         <div className="navbar">
             <nav className="nav-links">
 
-                    <NavLink exact activeclassName="active-link" className="nav-link"  to="/">Home</NavLink>
-                    <NavLink exact activeclassName="active-link" className="nav-link"  to="/Products">Products</NavLink>
-                    <NavLink exact activeclassName="active-link" className="nav-link"  to="/About">About</NavLink>
+                    <NavLink exact activeclassname="active-link" className="nav-link"  to="/">Home</NavLink>
+                    <NavLink exact activeclassname="active-link" className="nav-link"  to="/Products">Products</NavLink>
+                    <NavLink exact activeclassname="active-link" className="nav-link"  to="/About">About</NavLink>
+                    <NavLink exact activelassname="active-link" className="nav-link"  to="/cart">Cart</NavLink>
 
             </nav>
 
-            <div className="cart">
-               <i class="fas fa-shopping-cart"></i>
-               <h3>3</h3>
-                
-            </div>
+            
+              
+
+            
+
+
+
+               <div className="dropdown">
+               <i className="fas fa-shopping-cart dropdown-toggle"
+                 type="button"
+                 id="dropdownMenuButton"
+                    data-mdb-toggle="dropdown"
+                    aria-expanded="false"></i>
+                    
+                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+
+                    <Cart/>
+                   
+                </ul>
+               
+
+               </div>
+
+
+
+   
+
+
+               
+          
 
 
 
