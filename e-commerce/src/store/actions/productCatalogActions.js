@@ -32,6 +32,7 @@ export const setOneProduct = product => {
     }
 }
 
+
 export const clearProduct =()=>{
     return{
         type:actiontypes().product.clear

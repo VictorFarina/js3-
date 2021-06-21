@@ -17,6 +17,7 @@ const Products = () => {
         <div className="container d-flex flex-wrap row gap-5 mx-auto">
             {productCatalog.map(product=>(
             <ProductCard product={product} key={product._id}/>
+            
         ))}
           
 
