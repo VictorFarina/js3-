@@ -14,11 +14,10 @@ const Products = () => {
 
     return (
 
-        <div className="container d-flex flex-wrap row gap-5 mx-auto">
+        <div className="container d-flex flex-wrap row  mx-auto mt-5">
             {productCatalog.map(product=>(
-            <ProductCard product={product} key={product._id}/>
-            
-        ))}
+                  <ProductCard product={product} key={product._id}/>
+            ))}
           
 
         </div>

@@ -6,6 +6,8 @@ import About from './views/About'
 import Products from './views/Products'
 import Cart from './components/Cart'
 import ProductPage from './views/ProductPage'
+import Login from './components/Login'
+import Register from './components/Register'
 import { BrowserRouter as Router,Switch, Route } from 'react-router-dom'
 
 
@@ -28,6 +30,8 @@ function App() {
             <Route exact path="/Products"component={Products}/>
             <Route exact path ="/Products/:id"component={ProductPage}/>
             <Route exact path ="/cart"component={Cart}/>
+            <Route exact path ="/login"component={Login}/>
+            <Route exact path ="/register"component={Register}/>
 
         </Switch>
 

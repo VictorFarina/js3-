@@ -137,3 +137,10 @@ font-weight: 300;
   height: 70%;
 }
 
+
+.log-in{
+  background-image: url('https://images.pexels.com/photos/4969864/pexels-photo-4969864.jpeg?cs=srgb&dl=pexels-maria-orlova-4969864.jpg&fm=jpg');
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+

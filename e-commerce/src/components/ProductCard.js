@@ -7,7 +7,7 @@ const ProductCard = ({product}) => {
     const dispatch=useDispatch();
     
     return (
-            <div className="card text-center col-md-2 col-sm-5  shadow-5 tada w-25">
+            <div className="col-6 col-sm-4 card text-center shadow-5 w-25">
                 <div className="m-auto">
                     <img className="card-img-top hover-zoom" src={product.img} alt=""/>
                 </div>

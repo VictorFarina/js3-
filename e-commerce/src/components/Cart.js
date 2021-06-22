@@ -10,35 +10,19 @@ import CartItem from './CartItem';
 
 const Cart = () => {
 
-
     const shoppingCart = useSelector(state => state.cartReducer.cart)
-    const totalCart =useSelector(state=>state.cartReducer.totalCart)
+    const totalPrice =useSelector(state=>state.cartReducer.totalPrice)
     
-
-    
-
-    
-    
-  
 
     return (
 
         <div className="bg-light ">
-
             {shoppingCart.map(product => (
-
                 <CartItem product={product} key={product._id}/>
-
-
-
             ))}  
-
             <div className="p-4 gap-2 align-content-end">
-                <h4 className="text-muted">Total:<span className="text-danger">{totalCart}</span></h4>
+                <h4 className="text-muted">Total:<span className="text-danger">{totalPrice}kr</span></h4>
             </div>
-
-
-
         </div>
     )
 }
