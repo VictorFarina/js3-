@@ -164,7 +164,7 @@ exports.getUser = (req, res) => {
   })
 }
 
-exports.addToOrders =( req, res) => {
+exports.addToOrders =(req, res) => {
   User.updateOne ({$push:{orders: req.body}}) 
     .then(()=>{
       res.status(200).json({

@@ -19,21 +19,33 @@ export const loginUser = _user => {
 //         console.log(user);
 }
 
+
+export const addUserOrder = _order => {
+    return async dispatch => {
+        const res = await axios.patch('http://localhost:9999/api/users/:id',_order)
+        console.log(res);
+        
+    }
+
+}
+
+
 export const setActiveUser = _user => {
     return {        
         type:actiontypes().user.login,
         payload:_user
     }
 }
-export const logoutUser = _user => {
 
 
-    return {        
-        type:actiontypes().user.login,
-        payload:_user
-    }
-    
-}
+
+
+
+export const logoutUser = () => ({
+        type:actiontypes().user.logout,
+})
+
+
 
 
 

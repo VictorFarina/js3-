@@ -4,17 +4,22 @@ import Cart from './Cart'
 import {useSelector,useDispatch} from 'react-redux'
 
 import { logoutUser } from '../store/actions/userActions';
+import { clearCart } from '../store/actions/cartActions';
 
 
 
 const Navbar = () => {
     const totalQty = useSelector(state => state.cartReducer.totalQty)
-    const activeUser = useSelector(state => state.userReducer.loggedIn)
+    const loggedIn = useSelector(state => state.userReducer.loggedIn)
     const dispatch = useDispatch();
-    
+
     const onSub = e => {
         e.stopPropagation();
+        dispatch(clearCart())
         dispatch(logoutUser())
+        
+        
+        
     }
     
 
@@ -44,7 +49,7 @@ const Navbar = () => {
                                 
                         <ul className="dropdown-menu dropdown-menu-end cart w-25" aria-labelledby="dropdownMenuButton">
 
-                        {!activeUser ?  <NavLink  className="nav-link text-dark"  to="/login">Login</NavLink> 
+                        {!loggedIn ?  <NavLink  className="nav-link text-dark"  to="/login">Login</NavLink> 
                         : <NavLink onClick={onSub} className="nav-link text-dark" to="/products"> Logout</NavLink> 
                         }
                        

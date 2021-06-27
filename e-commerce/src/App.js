@@ -9,9 +9,8 @@ import ProductPage from './views/ProductPage'
 import Login from './components/Login'
 import Register from './components/Register'
 import User from './views/User'
+import Checkout from './views/Checkout'
 import { BrowserRouter as Router,Switch, Route } from 'react-router-dom'
-
-
 
 
 function App() {  
@@ -35,6 +34,7 @@ function App() {
             <Route exact path ="/register"component={Register}/>
 
             <Route exact path ="/user/:id" component={User}/>
+            <Route exact path ="/checkout" component={Checkout}/>
 
             
 

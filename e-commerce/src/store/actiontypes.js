@@ -1,6 +1,7 @@
 const actiontypes = ()=>{
     
     return{
+
         productCatalog:{
             set: 'PRODUCT_CATALOG_SET'
         },
@@ -12,7 +13,7 @@ const actiontypes = ()=>{
         },
 
 
-        cart:{
+        cart: {
         add:'ADD_ITEM',
         sub:'SUB_ITEM',
         remove:'REMOVE_FROM_CART',
@@ -24,7 +25,8 @@ const actiontypes = ()=>{
         user:{
             register:'REGISTER_USER',
             login:'LOGIN_USER',
-            logout:'LOG_OUT'
+            logout:'LOG_OUT',
+      
         }
     }
 }

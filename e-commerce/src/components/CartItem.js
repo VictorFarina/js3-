@@ -15,14 +15,15 @@ const CartItem = ({product}) => {
         e.stopPropagation()
         dispatch(addItem(product))
     }
+
     const sub = e => {
         e.stopPropagation()
         dispatch(subItem(product))
     }
+
     const remove = e => {
         e.stopPropagation()
         dispatch(removeItem(product))
-        
     }
 
 

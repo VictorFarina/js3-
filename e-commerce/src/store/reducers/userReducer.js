@@ -15,10 +15,11 @@ const userReducer =(state=initialState,action) => {
         return state
 
     case actiontypes().user.logout: 
-        state = initialState
-
+        state.loggedIn=false
+        state.activeUser={}
         return state
 
+  
     
 
     default: 
