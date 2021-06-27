@@ -8,6 +8,7 @@ const initialState = {
 const productReducer=(state=initialState,action) => {
 
     switch (action.type) {
+        
         case actiontypes().product.set:state = action.payload
             return state
 

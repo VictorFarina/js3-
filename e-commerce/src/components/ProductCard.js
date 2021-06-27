@@ -11,13 +11,16 @@ const ProductCard = ({product}) => {
                 <div className="m-auto">
                     <img className="card-img-top hover-zoom" src={product.img} alt=""/>
                 </div>
+                
                 <Link className="view-btn"
                 to={`/products/${product._id}`}  
                 > view </Link>
+                
                 <div className="card-body card-block row">
                     <p className="card-title col-12 mt-5">{product.name}</p>
                     <small>fr {product.price} kr</small>
                 </div>
+
                 <button className="btn btn-dark p-3 mb-3" 
                     onClick={()=>{dispatch(addItem(product))}}>Add to cart
                 </button>

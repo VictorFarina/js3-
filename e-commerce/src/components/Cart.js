@@ -20,6 +20,7 @@ const Cart = () => {
             {shoppingCart.map(product => (
                 <CartItem product={product} key={product._id}/>
             ))}  
+
             <div className="p-4 gap-2 align-content-end">
                 <h4 className="text-muted">Total:<span className="text-danger">{totalPrice}kr</span></h4>
             </div>

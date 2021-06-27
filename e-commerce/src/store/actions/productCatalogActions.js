@@ -2,6 +2,7 @@
 import actiontypes from '../actiontypes';
 import axios from 'axios'; 
 
+
 export const getProductCatalog=() => {
     return async dispatch => {
         const res = await axios.get('http://localhost:9999/api/products')
@@ -15,15 +16,16 @@ export const setProducts = products => {
         type:actiontypes().productCatalog.set, 
         payload: products  
     }
+    
 }
 //recieving id from component
-
 export const getProductById = id => {
     return async dispatch => {
         const res = await axios.get(`http://localhost:9999/api/products/${id}`)
         dispatch(setOneProduct(res.data))
     }
 }
+
 
 export const setOneProduct = product => {
     return {

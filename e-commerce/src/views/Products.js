@@ -16,7 +16,9 @@ const Products = () => {
 
         <div className="container d-flex flex-wrap row  mx-auto mt-5">
             {productCatalog.map(product=>(
+
                   <ProductCard product={product} key={product._id}/>
+                  
             ))}
           
 

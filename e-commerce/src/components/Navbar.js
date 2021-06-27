@@ -1,12 +1,21 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import Cart from './Cart'
-import {useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
+
+import { logoutUser } from '../store/actions/userActions';
+
+
 
 const Navbar = () => {
-
-
     const totalQty = useSelector(state => state.cartReducer.totalQty)
+    const activeUser = useSelector(state => state.userReducer.loggedIn)
+    const dispatch = useDispatch();
+    
+    const onSub = e => {
+        e.stopPropagation();
+        dispatch(logoutUser())
+    }
     
 
     return (
@@ -25,18 +34,22 @@ const Navbar = () => {
             <div className="d-flex">
 
                 <div className="dropdown justify-content-end mx-5">
-                    
-                    
                         <i className="fas fa-user dropdown-toggle position-relative"
                             type="button"
                             id="dropdownMenuButton"
                             data-mdb-toggle="dropdown"
                             aria-expanded="false">
-                            
+                        
                         </i>
                                 
                         <ul className="dropdown-menu dropdown-menu-end cart w-25" aria-labelledby="dropdownMenuButton">
-                        <NavLink  className="nav-link text-dark"  to="/login">Login</NavLink>
+
+                        {!activeUser ?  <NavLink  className="nav-link text-dark"  to="/login">Login</NavLink> 
+                        : <NavLink onClick={onSub} className="nav-link text-dark" to="/products"> Logout</NavLink> 
+                        }
+                       
+                      
+
                         </ul>
                 
                 </div>

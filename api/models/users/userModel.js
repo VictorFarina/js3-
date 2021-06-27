@@ -11,6 +11,10 @@ const auth = require('../../auth/auth')
 exports.registerUser = (req, res) => { 
   //funktionen ska innehålla en parameter för request och ett för respond
   User.exists({email: req.body.email}, (err, result) => { 
+
+
+
+  
     // 1. Kolla om det redan inns en User med smma mail som den body som skickats med i request. Vi får vi tillbaka ett error eller ett resultat. 
     if (err) {
       return res.status(400).json({
@@ -20,16 +24,28 @@ exports.registerUser = (req, res) => {
         err
       })
     }
+    
     // Om vi får ett error så betyder det att  objektet eller det som skickats med i requesten inte är byggd enligt userSchema. då reurneras ett response med status 400 och ett  json object som innehållerr med status  och felmeddelande om en Bad Request  
 
     if (result) {
+
       return res.status(400).json({
         statusCode: 400,
         status: false,
-        message: 'The email address is already taken',
+        message:  'The email address is already taken',
+        
       })
     } 
+    
+    
+    
     //om vi få tillbaka ett resultat betyder det att det fans en User med samma mail. Även i detta fall returners ett respons med status 400 och men med som meddelar att mailen redan finns 
+
+
+
+
+
+
 
 
     //----CRYPTING USER PASSWORD-------//
@@ -59,7 +75,7 @@ exports.registerUser = (req, res) => {
             res.status(201).json({
             statusCode: 201,
             status: true,
-            message: 'User was created successfully'
+            message: 'user created succesfully'
             })
           })
           .catch((err) => {
@@ -79,32 +95,31 @@ exports.registerUser = (req, res) => {
 
 //----LOGINUSER (recieving request trough userController.js)----
 exports.loginUser = (req, res) => {
-  // return res.status(404).json({
-  //   statusCode: 404,
-  //   status: false,
-  //   message:'Incorrect email or password'  +' '+ req.body.email
-  // })
+ 
 
  
   User.findOne({ email: req.body.email }).then ( user => {
+
+     
+
+    
+
       if (!user) {// mail dosen't exist {
-        return res.status(404).json({
+        return res.status(404).json({   
           statusCode: 404,
           status: false,
           message:'Incorrect email or password' ,
         })
-      }
+      } 
 
-      
-
-      
       bcrypt.compare(req.body.password, user.passwordHash, (err, result) => {
+        
+
         if (err) {
           return res.status(400).json({
             statusCode: 400,
             status: false,
             message: 'Bad request'
-            
           })
         }
 
@@ -114,6 +129,7 @@ exports.loginUser = (req, res) => {
             status: true,
             message: "Authentication was successfully.",
             token: auth.generateToken(user),
+            user
           })
         }
 
@@ -126,12 +142,7 @@ exports.loginUser = (req, res) => {
         }
       })
   })
-
 }
-
-
-
-
 
 exports.getUser = (req, res) => {
   User.findOne({ email: req.params.id }).then((user) => {
