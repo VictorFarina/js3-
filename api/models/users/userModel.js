@@ -75,7 +75,7 @@ exports.registerUser = (req, res) => {
             res.status(201).json({
             statusCode: 201,
             status: true,
-            message: 'user created succesfully'
+            message: 'user created succesfully',
             })
           })
           .catch((err) => {
@@ -95,15 +95,7 @@ exports.registerUser = (req, res) => {
 
 //----LOGINUSER (recieving request trough userController.js)----
 exports.loginUser = (req, res) => {
- 
-
- 
   User.findOne({ email: req.body.email }).then ( user => {
-
-     
-
-    
-
       if (!user) {// mail dosen't exist {
         return res.status(404).json({   
           statusCode: 404,
@@ -158,28 +150,38 @@ exports.getUser = (req, res) => {
         statusCode: 200,
         status: true,
         message: "Getting user Successfully",
+        token: auth.generateToken(user),
         user, 
+        
       });
     } 
   })
 }
 
 exports.addToOrders =(req, res) => {
-  User.updateOne ({$push:{orders: req.body}}) 
-    .then(()=>{
-      res.status(200).json({
-        statusCode:200,
-        status:true,
-        message: 'user updated'
-      })
+  let exists=User.findOne({email:req.params.id})
+  if(exists) {
+    
+  User.updateOne(
+      { email: req.params.id },
+      { $push: { orders: req.body } }
+    )   
+  .then(()=>{
+    res.status(200).json({
+      statusCode:200,
+      status:true,
+      message: 'user updated',
+      
     })
-      .catch(()=>{
+  })
+   .catch(()=>{
         res.status(500).json({
           statusCode:500,
           status:false,
           message: 'failed to update user'
       })
     })
+  }
 }
 
 

@@ -1,65 +1,23 @@
 import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
 import { loginUser} from '../store/actions/userActions'
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
-    const activeUser = useSelector(state=>state.userReducer.activeUser)
-    const loggedIn = useSelector(state=>state.userReducer.loggedIn)
+    
     const history = useHistory();
     const dispatch = useDispatch();
-
-
     const onSub=(e)=>{
-
         e.preventDefault();
-
-       
-        const user ={
+        const user = {
             email: document.getElementById('email').value,
             password: document.getElementById('password').value
         }
         // console.log(user);
-         dispatch(loginUser(user))
-      
-
-      
-        
-        
-        const userId = activeUser
-
-        loggedIn 
-        ? 
-        history.push({pathname:`/user/${userId}`,
-        activeUser:{activeUser}}) 
-        : 
-        history.push('/home')
-
-
-
-
-
- 
-  
-      
-          
-
+        dispatch(loginUser(user,history))
        
-       
-
-
-
-
     }
-
-
-
-
-
-   
-
     return (
 
        

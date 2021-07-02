@@ -10,7 +10,9 @@ import { clearCart } from '../store/actions/cartActions';
 
 const Navbar = () => {
     const totalQty = useSelector(state => state.cartReducer.totalQty)
+
     const loggedIn = useSelector(state => state.userReducer.loggedIn)
+
     const dispatch = useDispatch();
 
     const onSub = e => {

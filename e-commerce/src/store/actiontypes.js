@@ -26,6 +26,7 @@ const actiontypes = ()=>{
             register:'REGISTER_USER',
             login:'LOGIN_USER',
             logout:'LOG_OUT',
+            update:'UPDATE_USER'
       
         }
     }

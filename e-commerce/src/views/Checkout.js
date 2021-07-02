@@ -6,11 +6,26 @@ const Checkout = () => {
 
     const dispatch = useDispatch();
     const activeUser = useSelector(state => state.userReducer.activeUser)
-    const order = useSelector(state => state.cartReducer.cart)
+    const cart = useSelector(state => state.cartReducer.cart)
+    const totalPrice = useSelector(state => state.cartReducer.totalPrice)
+
+
 
     const onSub = (e)=>{
+
         e.preventDefault();
-        dispatch(addUserOrder(order))
+
+        const order = {
+            orderNo:    String(Math.random()).slice(-10),
+            date:       Date(),
+            products:   cart,
+            totalPrice: totalPrice
+        }
+
+        dispatch(addUserOrder(order,activeUser))
+        
+
+
     }
 
 

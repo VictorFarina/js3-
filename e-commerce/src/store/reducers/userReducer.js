@@ -5,13 +5,13 @@ const initialState = {
     activeUser:{}
 }
 
-const userReducer =(state=initialState,action) => {
+const userReducer = (state=initialState,action) => {
     
     switch (action.type) {
 
     case actiontypes().user.login: 
         state.loggedIn = true
-        state.activeUser = action.payload.user
+        state.activeUser = action.payload
         return state
 
     case actiontypes().user.logout: 
