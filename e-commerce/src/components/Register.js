@@ -4,31 +4,23 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { registerUser} from '../store/actions/userActions'
+import { useHistory } from 'react-router-dom';
+
 
 const Register = () => {
-
+    
+    const history = useHistory();
     const dispatch = useDispatch();
-
-
-   
-   
-
     const onSub=(e)=>{
         e.preventDefault();
-
         let user = {
             firstName:document.getElementById('firstName').value,
             lastName:document.getElementById('lastName').value,
             email:document.getElementById('email').value,
             password:document.getElementById('password').value
         }
-
-        dispatch(registerUser(user))
-        
+        dispatch(registerUser(user,history))
     }
-
-
-
     return (
 
     <form onSubmit={onSub} className="log-in w-50 height-50 mx-auto text-center form-group shadow-4 my-5 py-5">

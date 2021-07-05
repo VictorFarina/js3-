@@ -10,6 +10,7 @@ exports.getProducts = (req, res) => {
 
     Product.find()
         .then(data =>res.status(200).json(data))
+        
         .catch(err => res.status(500).json({
             statusCode:500,
             status:false,

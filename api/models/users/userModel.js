@@ -67,7 +67,8 @@ exports.registerUser = (req, res) => {
         firstName:      req.body.firstName,
         lastName:       req.body.lastName,
         email:          req.body.email,
-        passwordHash:   hash, 
+        passwordHash:   hash,
+        isAdmin:        false
       })
       //annars skapar vi en en newUser som innehåller en ny instans objectet User (se userSchema) och likställer varje property med det som användaren skickat med i body i request, här kan vi också välja att likställa  propertyn passwordHash med det hash som vi tidigarde skapade. tex  firstName:  req.body.firstName,  passwordHash: hash 
 
@@ -158,13 +159,94 @@ exports.getUser = (req, res) => {
   })
 }
 
+exports.updateOrder = (req, res) => { 
+  console.log(req.body.orders);
+
+  let exists=User.findOne({email:req.body.email})
+  if(exists){
+
+    User.updateOne(
+      {email:req.body.email},
+      {orders:req.body.orders})
+
+
+      .then(()=>{
+        res.status(200).json({
+          statusCode:200,
+          status:true,
+          message: 'user updated',
+          
+        })
+      })
+       .catch(()=>{
+            res.status(500).json({
+              statusCode:500,
+              status:false,
+              message: 'failed to update user'
+          })
+        })
+      }
+
+  }
+ 
+
+
+
+
+
+ 
+
+
+
+  
+
+
+
+
+
+
+
+  
+
+
+    
+     
+     
+
+     
+  //     }
+
+
+
+
+
+exports.getAllUsers = (req, res) => {
+
+      User.find()
+        .then(data =>res.status(200).json(data))
+        .catch(err => res.status(500).json({
+          statusCode:500,
+          status:false,
+          message:err.message || 'Something went wrong '+ req
+      }))
+
+      
+
+    
+    
+}
+
+
+
 exports.addToOrders =(req, res) => {
   let exists=User.findOne({email:req.params.id})
   if(exists) {
     
+    
   User.updateOne(
       { email: req.params.id },
-      { $push: { orders: req.body } }
+      { $push:{orders: { ...req.body} }
+  }
     )   
   .then(()=>{
     res.status(200).json({

@@ -12,10 +12,12 @@ const Navbar = () => {
     const totalQty = useSelector(state => state.cartReducer.totalQty)
 
     const loggedIn = useSelector(state => state.userReducer.loggedIn)
+    const isAdmin = useSelector(state => state.userReducer.isAdmin)
 
+   
     const dispatch = useDispatch();
 
-    const onSub = e => {
+    const logout = e => {
         e.stopPropagation();
         dispatch(clearCart())
         dispatch(logoutUser())
@@ -51,9 +53,18 @@ const Navbar = () => {
                                 
                         <ul className="dropdown-menu dropdown-menu-end cart w-25" aria-labelledby="dropdownMenuButton">
 
+                 
+
                         {!loggedIn ?  <NavLink  className="nav-link text-dark"  to="/login">Login</NavLink> 
-                        : <NavLink onClick={onSub} className="nav-link text-dark" to="/products"> Logout</NavLink> 
+                        :  (
+                            <>
+                            <NavLink className="nav-link text-dark" to="/user">User</NavLink>
+                            <NavLink onClick={logout} className="nav-link text-dark" to="/products">Logout</NavLink>
+                            </>
+                        )
                         }
+
+                       
                        
                       
 

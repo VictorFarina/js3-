@@ -6,6 +6,10 @@ const actiontypes = ()=>{
             set: 'PRODUCT_CATALOG_SET'
         },
 
+        allUsers:{
+            set: 'SET_ALL_USERS'
+        },
+
         
         product:{
             set:'SET_PRODUCT',

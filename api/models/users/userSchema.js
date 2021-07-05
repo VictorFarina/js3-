@@ -11,6 +11,8 @@ const userSchema = mongodb.Schema ({
     passwordHash:   { type: String, required: true },
 
     orders:         {type: Array},
+
+    isAdmin:         {type: Boolean, required: true},
     
     created:        { type: Date, default:Date.now },
 

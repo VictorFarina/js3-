@@ -7,7 +7,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
     const activeUser = useSelector((state) => state.userReducer.activeUser);
     
 
-    console.log(loggedIn);
+  
   
     return (
       <Route

@@ -2,7 +2,8 @@ import actiontypes from "../actiontypes";
 
 const initialState = {
     loggedIn:false,
-    activeUser:{}
+    activeUser:{},
+    isAdmin:false
 }
 
 const userReducer = (state=initialState,action) => {
@@ -12,6 +13,7 @@ const userReducer = (state=initialState,action) => {
     case actiontypes().user.login: 
         state.loggedIn = true
         state.activeUser = action.payload
+        state.isAdmin = action.payload.isAdmin
         return state
 
     case actiontypes().user.logout: 

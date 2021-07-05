@@ -12,20 +12,16 @@ const Checkout = () => {
 
 
     const onSub = (e)=>{
-
         e.preventDefault();
-
-        const order = {
+        const order ={
             orderNo:    String(Math.random()).slice(-10),
-            date:       Date(),
+            date:       String(new Date()),
             products:   cart,
-            totalPrice: totalPrice
+            totalPrice: totalPrice,
+            shipped:    false
         }
-
         dispatch(addUserOrder(order,activeUser))
-        
-
-
+        console.log(activeUser);
     }
 
 
