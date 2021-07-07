@@ -12,7 +12,7 @@ const Navbar = () => {
     const totalQty = useSelector(state => state.cartReducer.totalQty)
 
     const loggedIn = useSelector(state => state.userReducer.loggedIn)
-    const isAdmin = useSelector(state => state.userReducer.isAdmin)
+    // const isAdmin = useSelector(state => state.userReducer.isAdmin)
 
    
     const dispatch = useDispatch();

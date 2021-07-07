@@ -11,10 +11,6 @@ const auth = require('../../auth/auth')
 exports.registerUser = (req, res) => { 
   //funktionen ska innehålla en parameter för request och ett för respond
   User.exists({email: req.body.email}, (err, result) => { 
-
-
-
-  
     // 1. Kolla om det redan inns en User med smma mail som den body som skickats med i request. Vi får vi tillbaka ett error eller ett resultat. 
     if (err) {
       return res.status(400).json({
@@ -26,27 +22,15 @@ exports.registerUser = (req, res) => {
     }
     
     // Om vi får ett error så betyder det att  objektet eller det som skickats med i requesten inte är byggd enligt userSchema. då reurneras ett response med status 400 och ett  json object som innehållerr med status  och felmeddelande om en Bad Request  
-
     if (result) {
-
       return res.status(400).json({
         statusCode: 400,
         status: false,
         message:  'The email address is already taken',
-        
       })
     } 
-    
-    
-    
+
     //om vi få tillbaka ett resultat betyder det att det fans en User med samma mail. Även i detta fall returners ett respons med status 400 och men med som meddelar att mailen redan finns 
-
-
-
-
-
-
-
 
     //----CRYPTING USER PASSWORD-------//
     const salt = bcrypt.genSaltSync(10)
@@ -62,7 +46,6 @@ exports.registerUser = (req, res) => {
       }
       // med hjälp av bcrypt så kan vi använda funktionen hash med lösenordet som kommer med bodyn i request som första argument, och salta det med innhållet vi fick frrån Salt genom att skriva det som andra argument och som tredje argument begära en callbackfuction som ger antingen ett err eller ett Hash
       //om (err) status kod 500 jsonobject som medellar om att kryperingen misslyckats
-
       const newUser = new User ({
         firstName:      req.body.firstName,
         lastName:       req.body.lastName,
@@ -71,7 +54,6 @@ exports.registerUser = (req, res) => {
         isAdmin:        false
       })
       //annars skapar vi en en newUser som innehåller en ny instans objectet User (se userSchema) och likställer varje property med det som användaren skickat med i body i request, här kan vi också välja att likställa  propertyn passwordHash med det hash som vi tidigarde skapade. tex  firstName:  req.body.firstName,  passwordHash: hash 
-
       newUser.save().then(() => {
             res.status(201).json({
             statusCode: 201,
@@ -104,6 +86,8 @@ exports.loginUser = (req, res) => {
           message:'Incorrect email or password' ,
         })
       } 
+
+ 
 
       bcrypt.compare(req.body.password, user.passwordHash, (err, result) => {
         
@@ -138,6 +122,7 @@ exports.loginUser = (req, res) => {
 }
 
 exports.getUser = (req, res) => {
+  
   User.findOne({ email: req.params.id }).then((user) => {
     if (!user) {
       return res.status(400).json({
@@ -147,29 +132,25 @@ exports.getUser = (req, res) => {
       });
 
     } else {
+
       return res.status(200).json({
         statusCode: 200,
         status: true,
         message: "Getting user Successfully",
         token: auth.generateToken(user),
         user, 
-        
       });
     } 
   })
 }
 
-exports.updateOrder = (req, res) => { 
-  console.log(req.body.orders);
 
+exports.updateOrder = (req, res) => { 
   let exists=User.findOne({email:req.body.email})
   if(exists){
-
     User.updateOne(
       {email:req.body.email},
       {orders:req.body.orders})
-
-
       .then(()=>{
         res.status(200).json({
           statusCode:200,
@@ -186,63 +167,22 @@ exports.updateOrder = (req, res) => {
           })
         })
       }
-
-  }
- 
-
-
-
-
+}
 
  
-
-
-
-  
-
-
-
-
-
-
-
-  
-
-
-    
-     
-     
-
-     
-  //     }
-
-
-
-
-
 exports.getAllUsers = (req, res) => {
-
       User.find()
         .then(data =>res.status(200).json(data))
         .catch(err => res.status(500).json({
           statusCode:500,
           status:false,
           message:err.message || 'Something went wrong '+ req
-      }))
-
-      
-
-    
-    
+      }))     
 }
-
-
 
 exports.addToOrders =(req, res) => {
   let exists=User.findOne({email:req.params.id})
   if(exists) {
-    
-    
   User.updateOne(
       { email: req.params.id },
       { $push:{orders: { ...req.body} }
@@ -253,9 +193,11 @@ exports.addToOrders =(req, res) => {
       statusCode:200,
       status:true,
       message: 'user updated',
+
       
     })
   })
+
    .catch(()=>{
         res.status(500).json({
           statusCode:500,

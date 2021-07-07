@@ -7,8 +7,8 @@ const userModel = require('../models/users/userModel')
 const auth = require('../auth/auth')
 
 router.get('/:id', auth.verifyToken, userModel.getUser)
-router.get('/', userModel.getAllUsers)
 
+router.get('/', userModel.getAllUsers)
 router.post('/register', userModel.registerUser);
 router.post('/login', userModel.loginUser);
 

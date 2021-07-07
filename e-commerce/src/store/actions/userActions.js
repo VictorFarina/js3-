@@ -4,10 +4,11 @@ import axios from 'axios';
 
 export const registerUser = (_user ,history )=> {
     return async dispatch => {
-        const res = await axios.post('http://localhost:9999/api/users/register', _user)
+        await axios.post('http://localhost:9999/api/users/register', _user)
         dispatch(loginUser(_user,history))
     }
 }
+
 export const loginUser = (_user ,history )=> {
     return async dispatch => {
         const res = await axios.post('http://localhost:9999/api/users/login', _user)
@@ -15,73 +16,80 @@ export const loginUser = (_user ,history )=> {
             ...res.data.user,
             token: res.data.token
         }))
+        if(history){
         history.push('/user')
+        }
+
         
     }
 }
 
-export const getAllUsers = () => {
+export const getAllUsers = (_orderRes) => {
+
+    
+   
     return async dispatch => {
         const res = await axios.get('http://localhost:9999/api/users')
         dispatch(setAllUsers(res.data))
-        
+        if(_orderRes){
+
+            console.log(_orderRes);
+            
+           
+        }
+
+
+       
     }
 }
 
-export const updateUser = (_order,_user) => {
 
-    
-
- 
-  
-    
+export const updateOrderStatus = (_order, _user, userToken) => {
     return async dispatch => {
         const res = await axios.patch(`http://localhost:9999/api/users/order/${_order.orderNo}`,_user)
+        res.status===(200) ? 
+            dispatch(getAllUsers(res)) : console.log('error') ;
 
-        
-        // .then(
-        // dispatch(getAllUsers())
-        // )
-
-      
+           // if admin is the user wich order is updated
+        userToken ? 
+            dispatch(updateActiveUser(_user,userToken)): console.log('admin order updated') ;
     }
 }
 
 export const addUserOrder = (_order, _user) => {
-    console.log(_user);
-    
+ 
     return async dispatch => {
-        const res = await axios.patch(`http://localhost:9999/api/users/${_user.email}`,
-            _order
-            // {headers: { Authorization: "Bearer " + user.token }}
+        await axios.patch(`http://localhost:9999/api/users/${_user.email}`,
+            _order,
+            {headers: { Authorization: "Bearer " + _user.token }}
         )
-        
         dispatch(updateActiveUser(_user))
-        console.log(_user);
+
+        
+       
     }
 }
 
-
-
-export const updateActiveUser = _user => {
+export const updateActiveUser = (_user,_userToken) => {
     return async dispatch => {
         const res = await axios.get(
             `http://localhost:9999/api/users/${_user.email}`,
-            {
-                headers: {
-                    Authorization: "Bearer " + _user.token
-                }
-            }
+            { headers: { Authorization: "Bearer " + _userToken }}
         )
-        dispatch(setActiveUser(res.data.user))
-        console.log(res.data.user);
+        dispatch(setActiveUser({
+            ...res.data.user,
+            token: res.data.token
+        }))
     }
 }
-export const setActiveUser = _user => {
+
+export const setActiveUser = (_user) => {
     return {
+
         type: actiontypes().user.login,
         payload: _user
     }
+   
 }
 export const logoutUser = () => ({
     type: actiontypes().user.logout,

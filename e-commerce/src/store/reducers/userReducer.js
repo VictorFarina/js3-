@@ -1,16 +1,22 @@
 import actiontypes from "../actiontypes";
 
 const initialState = {
+
+   
     loggedIn:false,
     activeUser:{},
     isAdmin:false
 }
 
+
 const userReducer = (state=initialState,action) => {
+
+
     
     switch (action.type) {
 
     case actiontypes().user.login: 
+  
         state.loggedIn = true
         state.activeUser = action.payload
         state.isAdmin = action.payload.isAdmin
@@ -21,8 +27,6 @@ const userReducer = (state=initialState,action) => {
         state.activeUser={}
         return state
 
-  
-    
 
     default: 
         return state
