@@ -21,21 +21,27 @@ const AllUsers = () => {
 <section className=" container d-flex mt-5">
         <UserNav/>
         <div className="ms-5 mt-5">
-            <h1>All users: </h1>
-            <ul className="m-4 p-5">
+            <h3>Alla använare:</h3>
+            <small>Här kan du som admin hantera kundordrar</small>
+            <ul className="my-4 p-5">
+                <h3 className="mb-5">Medlemmar:<i className="fas fa-arrow-down"></i> </h3>
             {allUsers.map( user => (
-            <li 
+            <div 
             key={user._id} 
-            className="shadow-5 list-unstyled d-flex mb-3 px-5">
-                <p> Namn: {user.firstName} {user.lastName}</p>
-                <p> E-mail: {user.email}</p>
-                
+            className="shadow-5 mb-3 px-5 justify-content-between">
+                <div>
+                    <p> {user.firstName} {user.lastName}</p>
+                    <small> E-mail: {user.email}</small>
+                </div>
+
                 <Link 
+                className="btn btn-dark btn-block text-center mb-5"
                 to={`/allUsers/${user._id}/orders`}
                 >    
-                <p> Beställningar</p>
+                <p>Se ordrar</p>
                 </Link>
-            </li>
+
+            </div>
 ))}
         
        </ul>

@@ -1,4 +1,4 @@
-import React , { useEffect, useState } from 'react'
+import React , { useEffect } from 'react'
 import UserNav from './user/UserNav'
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
@@ -7,11 +7,6 @@ import {updateOrderStatus, getAllUsers} from '../store/actions/userActions'
 const UserOrders = (props) => {
 
 // const [click,setClick]=useState()
-
-
-
-
-
  
 const { id } = useParams();
 const dispatch =useDispatch();
@@ -63,46 +58,31 @@ const changeOrderStatus = (e,_orderNo)=> {
 
 
 return (
-
 <section  className="container d-flex mt-5">
-
         <UserNav/>
     <div className="ms-5 mt-5">
-        <h1>Orders:</h1>
-      
-        <ul className="m-4 p-5 d-flex w-75 ">
+        <h1>{thisUser.firstName}s ordrar:</h1>
+        <ul className="m-4 p-5 d-flex flex-wrap">
             {thisUser.orders.map( order => (
                 <div 
                     key={order.orderNo}
-                    className={!order.shipped ? 'border border-warning' : 'border border-success' }>
-                        <p> Beställningsnummer: {order.orderNo}</p>
-                        <p> Beställningsdatum: {order.date}</p>
+                    className={!order.shipped ? 'border border-light p-3' : 'border border-success p-3' }>
+                        <p> OrderNo: {order.orderNo}</p>
+                        <p> Beställningsdatum: {order.date.slice(0, -38)}</p>
                         <p> Totalsumma: {order.totalPrice}sek</p>               
                         <p  
-                        className={!order.shipped ? 'bg-warning' : 'bg-success' } > Status: {order.shipped ? 'Order skickad' : 'Order ej skickad'} </p>
-
+                        className={!order.shipped ? 'bg-warning' : 'bg-success' } > Status: {order.shipped ? 'Skickad' : 'Ej skickad'} </p>
                     <button
                         type="button"
-                        
                         className="btn-block"
-                        // onClick={(e)=>{changeOrderStatus(e,order)}}
                         onClick={(e)=>changeOrderStatus(e,order.orderNo)}
-                      
                         >{!order.shipped ? 'skicka' : 'stoppa'}
                     </button> 
-
-
-                   
-
                 </div>
                 ))}            
         </ul>
-
-     
     </div>
 </section>
-            
-    
 )
 
 }

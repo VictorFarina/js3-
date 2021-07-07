@@ -9,7 +9,7 @@ const Welcome = ({activeUser}) => {
        <div>
             <div className="ms-5 mt-5">
                     <h1>Hej {activeUser.firstName}!</h1>
-                    <small>Här kan du se dina beställningar och användaruppgifter!</small>
+                    <small>Här kan du se beställningar osv osv!</small>
             </div>
        </div>
     )  
