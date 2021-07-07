@@ -63,7 +63,8 @@ export const addUserOrder = (_order, _user) => {
             _order,
             {headers: { Authorization: "Bearer " + _user.token }}
         )
-        dispatch(updateActiveUser(_user))
+        dispatch(updateActiveUser(_user,_user.token))
+        
 
         
        

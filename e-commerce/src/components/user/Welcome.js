@@ -2,8 +2,6 @@ import React from 'react'
 
 const Welcome = ({activeUser}) => {
 
-    
-
     return (
         
        <div>

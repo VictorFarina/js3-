@@ -122,17 +122,14 @@ exports.loginUser = (req, res) => {
 }
 
 exports.getUser = (req, res) => {
-  
   User.findOne({ email: req.params.id }).then((user) => {
     if (!user) {
       return res.status(400).json({
         statusCode: 400,
         status: false,
         message: "You made a bad request.",
-      });
-
+      })
     } else {
-
       return res.status(200).json({
         statusCode: 200,
         status: true,
@@ -144,7 +141,6 @@ exports.getUser = (req, res) => {
   })
 }
 
-
 exports.updateOrder = (req, res) => { 
   let exists=User.findOne({email:req.body.email})
   if(exists){
@@ -155,8 +151,7 @@ exports.updateOrder = (req, res) => {
         res.status(200).json({
           statusCode:200,
           status:true,
-          message: 'user updated',
-          
+          message: 'user updated'
         })
       })
        .catch(()=>{

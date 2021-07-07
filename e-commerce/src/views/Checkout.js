@@ -12,9 +12,7 @@ const Checkout = () => {
     const cart = useSelector(state => state.cartReducer.cart)
     const totalPrice = useSelector(state => state.cartReducer.totalPrice)
     const history = useHistory()
-    let component
-
-
+   
     const add = ( e, product ) => {
         e.preventDefault();
         dispatch(addItem(product))
@@ -30,10 +28,8 @@ const Checkout = () => {
         dispatch(removeItem(product))
     }
 
-  
-
-
-    const onSub =(e)=>{
+    const onSub =( e )=>{
+        console.log(activeUser);
         e.preventDefault();
         const order ={
             orderNo:    String(Math.random()).slice(-10),
@@ -43,22 +39,9 @@ const Checkout = () => {
             shipped:    false
         }
         dispatch(addUserOrder(order,activeUser))
-        setTimeout(
-            () => history.push('/user'), 
-            3000
-        );
-
-      
-   
+        history.push('/user')
     }
-
-
-  
-   
-
  
-
-
     return (   
 
 
