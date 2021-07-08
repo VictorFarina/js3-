@@ -30,7 +30,7 @@ const Login = () => {
                     <input className="w-25 py-2 my-3" type="text" placeholder="e-postaddress" id="email"/>
                     <br/>
                     
-                    <input className="w-25 py-2 my-3" type="text" placeholder="lösenord" id="password"/>
+                    <input className="w-25 py-2 my-3" type="password" placeholder="lösenord" id="password"/>
                     <br/>
 
                     <button className="w-25 py-3 my-3 btn btn-dark py-3" type="submit" placeholder="lösenord">LOGGA IN</button>

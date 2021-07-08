@@ -5,19 +5,16 @@ import { getAllUsers } from '../store/actions/userActions';
 import UserNav from './user/UserNav'
 import {Link} from 'react-router-dom'
 
-
 const AllUsers = () => {
-
+    
     const dispatch = useDispatch(); 
     const allUsers = useSelector(state =>state.allUsersReducer.allUsers)
-
-
     useEffect(() => {
         dispatch(getAllUsers());
     },[dispatch])
 
-
     return (
+
 <section className=" container d-flex mt-5">
         <UserNav/>
         <div className="ms-5 mt-5">
@@ -33,34 +30,18 @@ const AllUsers = () => {
                     <p> {user.firstName} {user.lastName}</p>
                     <small> E-mail: {user.email}</small>
                 </div>
-
                 <Link 
                 className="btn btn-dark btn-block text-center mb-5"
                 to={`/allUsers/${user._id}/orders`}
                 >    
                 <p>Se ordrar</p>
                 </Link>
-
             </div>
-))}
-        
-       </ul>
-            
-            
-        </div>
+))}     
+       </ul>           
+    </div>
 </section>
-            
-    
     )
-
-   
-
-
-
-
-
-  
-
 }
 
 export default AllUsers

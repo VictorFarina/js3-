@@ -22,6 +22,12 @@ import { BrowserRouter as Router,Switch, Route } from 'react-router-dom'
 function App() {  
 
   return (
+
+    <div className="container m-auto">
+
+
+
+    
    <Router>
      <Navbar/>
         <Switch>
@@ -48,6 +54,7 @@ function App() {
          
         </Switch>
    </Router>
+   </div>
   );
 }
 

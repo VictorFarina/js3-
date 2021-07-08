@@ -38,7 +38,7 @@ const Register = () => {
             <input className="w-25 py-2 my-3" type="text" placeholder="e-postaddress"id='email' />
             <br/>
 
-            <input className="w-25 py-2 my-3" type="text" placeholder="önskat lösenord"id='password'/>
+            <input className="w-25 py-2 my-3" type="password" placeholder="önskat lösenord"id='password'/>
             <br/>
             <br/>
             <button className="w-25 py-3 my-3 btn btn-dark py-3" type="submit" placeholder="bekräfta lösenord">BLI MEDLEM</button>
